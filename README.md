@@ -99,7 +99,7 @@
 
 | 프로젝트 | 내용 | 상태 |
 |---|---|---|
-| [DDoS 탐지 ML](https://github.com/yoonwoosung/MSL) | 머신러닝 과목 팀 프로젝트(팀장). 첫 모델의 **테스트 정확도 100%**를 성공으로 보지 않고 특성 중요도 1위가 Source IP인 것에서 **데이터 누수**를 진단, 식별자 제거 후 99.79%. 튜닝 128조합으로 기본값이 최적임을 확인 | 완료 (2026-1) |
+| [DDoS 탐지 ML](https://github.com/yoonwoosung/MSL) | 머신러닝 과목 팀 프로젝트(팀장). 첫 모델의 테스트 정확도 100%를 성공으로 보지 않고 특성 중요도 1위가 Source IP인 것에서 **데이터 누수**를 진단, 식별자 제거 후 99.79%. 튜닝 128조합으로 기본값이 최적임을 확인 | 완료 (2026-1) |
 | [Cain](https://github.com/kang-junhyeong/cain) | AI 다국어 캠퍼스 생활 안내 앱(모바일프로그래밍 팀 프로젝트, 팀장 · 백엔드 담당). Flutter 앱 구조 정리 7커밋. **FastAPI 백엔드는 아직 미구현** | 진행 중 (2026.11~) |
 | [Google 테크캠프 GCP 실습](https://github.com/yoonwoosung/GCP-BigQuery-API-Project) | BigQuery API · Sheets 시각화 · Vertex AI AutoML · 인스턴스 그룹 · Cloud Build · RAG 6건을 한 저장소로 통합 | 학습 (2025.07) |
 
