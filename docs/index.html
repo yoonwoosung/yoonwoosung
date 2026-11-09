@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>윤우성 — Backend-focused Fullstack Developer</title>
+<meta name="description" content="기술을 선택한 이유를 설명할 수 있는 개발자. K-OSP(실사용자 170명 운영)와 FarmLink(ICT이노베이션 충청권 대상)의 설계 판단·장애·기록을 근거와 함께 정리한 포트폴리오.">
+<meta property="og:title" content="윤우성 — Backend-focused Fullstack Developer">
+<meta property="og:description" content="문제를 발견하면 가설을 세우고 검증합니다. 모든 숫자에 커밋·파일·실행 결과 출처가 있습니다.">
+<meta property="og:image" content="https://raw.githubusercontent.com/yoonwoosung/yoonwoosung/main/assets/notion-cover.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2315213B'/%3E%3Cpath d='M9 11l-4 5 4 5M23 11l4 5-4 5M18 8l-4 16' stroke='%23fff' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --paper:#F7F8FA; --card:#FFFFFF; --ink:#15213B; --ink-2:#3C4660; --muted:#6B7488;
+  --line:#DDE2EB; --line-strong:#B9C2D3; --blue:#2457C5; --blue-soft:#E8EEFB; --navy:#15213B;
+  --ok:#1F7A4D; --ok-soft:#E6F4EC; --warn:#8A5A00; --warn-soft:#FBF1DC;
+  --max:880px; --gutter:20px;
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);line-height:1.65;font-size:16px;font-feature-settings:"tnum" 1;word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:4px}
+img{max-width:100%;height:auto;display:block}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;background:#EEF1F6;padding:.08em .35em;border-radius:4px;color:var(--ink-2)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(247,248,250,.88);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:18px;height:56px}
+.nav .name{font-weight:800;letter-spacing:-.01em;color:var(--ink);white-space:nowrap;flex:0 0 auto}
+.nav ul{display:flex;gap:4px;margin:0 0 0 auto;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav li a{display:block;padding:8px 10px;border-radius:8px;color:var(--ink-2);font-size:14px;white-space:nowrap}
+.nav li a:hover{background:#ECEFF5;text-decoration:none}
+
+/* hero */
+.hero{padding:72px 0 48px}
+.hero h1{font-size:clamp(30px,5.2vw,48px);line-height:1.18;letter-spacing:-.025em;font-weight:800;margin:0 0 20px;max-width:17em}
+.hero h1 .role{display:block;font-size:.42em;font-weight:600;letter-spacing:0;color:var(--blue);margin-bottom:14px}
+.hero p.lede{font-size:18px;color:var(--ink-2);margin:0 0 28px;max-width:34em}
+.hero .meta{display:flex;flex-wrap:wrap;gap:8px 22px;color:var(--muted);font-size:15px}
+.hero .meta a{color:var(--ink)}
+.hero .meta a:hover{color:var(--blue)}
+
+/* evidence strip — the one bold element */
+.ledger{margin:44px 0 0;border-top:2px solid var(--navy);border-bottom:1px solid var(--line)}
+.ledger ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr)}
+.ledger li{padding:22px 18px 20px 0;border-right:1px solid var(--line)}
+.ledger li:last-child{border-right:0}
+.ledger li+li{padding-left:18px}
+.ledger .n{font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--navy)}
+.ledger .n small{font-size:15px;font-weight:600;letter-spacing:0;margin-left:4px;color:var(--ink-2)}
+.ledger .what{margin:8px 0 4px;font-weight:600;font-size:15px}
+.ledger .src{font-size:13px;color:var(--muted)}
+.ledger .src a{color:var(--muted);border-bottom:1px dotted var(--line-strong)}
+.ledger .src a:hover{color:var(--blue);text-decoration:none;border-color:var(--blue)}
+@media (max-width:640px){
+  .ledger ol{grid-template-columns:1fr}
+  .ledger li{border-right:0;border-bottom:1px solid var(--line);padding:16px 0}
+  .ledger li+li{padding-left:0}
+  .ledger li:last-child{border-bottom:0}
+}
+
+/* sections */
+section{padding:64px 0 8px}
+section>.wrap>h2{font-size:26px;letter-spacing:-.02em;font-weight:800;margin:0 0 6px}
+section>.wrap>.sub{color:var(--muted);margin:0 0 28px;font-size:15px}
+hr.rule{border:0;border-top:1px solid var(--line);margin:56px auto 0;max-width:var(--max)}
+
+/* about */
+.about p{max-width:38em;margin:0 0 14px;color:var(--ink-2);font-size:16.5px}
+.about p strong{color:var(--ink);font-weight:700}
+
+/* project case file */
+.case{display:grid;grid-template-columns:1fr;gap:0;margin:0 0 56px;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.case figure{margin:0;background:#EDF0F5;border-bottom:1px solid var(--line)}
+.case figure img{width:100%;aspect-ratio:16/8.6;object-fit:cover;object-position:top}
+.case figcaption{font-size:12.5px;color:var(--muted);padding:8px 18px;border-top:1px solid var(--line);background:#F3F5F9}
+.case .body{padding:26px 24px 10px}
+.case h3{font-size:22px;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
+.case .when{color:var(--muted);font-size:14px;margin:0 0 16px}
+.badge{display:inline-block;font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:999px;vertical-align:middle;margin-left:8px}
+.badge.live{background:var(--ok-soft);color:var(--ok)}
+.badge.ended{background:#EEF1F6;color:var(--ink-2)}
+.case p.summary{margin:0 0 18px;color:var(--ink-2)}
+.kv{display:grid;grid-template-columns:7.5em 1fr;gap:10px 18px;margin:0 0 22px;font-size:15px}
+.kv dt{color:var(--muted);font-weight:600}
+.kv dd{margin:0;color:var(--ink-2)}
+.kv dd b{color:var(--ink);font-weight:700}
+@media (max-width:560px){.kv{grid-template-columns:1fr;gap:2px 0}.kv dd{margin-bottom:10px}}
+
+/* decision rows: problem → judgment → result, as a rail */
+.rail{margin:0;padding:0;list-style:none;border-left:3px solid var(--blue-soft)}
+.rail>li{position:relative;padding:0 0 22px 22px}
+.rail>li:last-child{padding-bottom:6px}
+.rail>li::before{content:"";position:absolute;left:-9px;top:8px;width:13px;height:13px;border-radius:50%;background:var(--card);border:3px solid var(--blue)}
+.rail h4{margin:0 0 8px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.pjr{display:grid;grid-template-columns:4.2em 1fr;gap:6px 14px;font-size:15px;margin:0}
+.pjr dt{font-weight:700;color:var(--ink)}
+.pjr dt.p{color:#8A3B12}.pjr dt.j{color:var(--blue)}.pjr dt.r{color:var(--ok)}
+.pjr dd{margin:0;color:var(--ink-2)}
+.pjr dd .ref{font-size:13px;color:var(--muted);white-space:nowrap}
+.pjr dd .ref a{color:var(--muted);border-bottom:1px dotted var(--line-strong)}
+.pjr dd .ref a:hover{color:var(--blue);text-decoration:none;border-color:var(--blue)}
+
+.case .foot{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding:18px 24px 20px;border-top:1px solid var(--line);background:#FAFBFD;font-size:14.5px}
+.case .foot .lim{color:var(--muted);margin-right:auto;flex-basis:100%}
+.case .foot a{font-weight:600}
+details.more{margin:0 0 18px;border-top:1px dashed var(--line)}
+details.more summary{cursor:pointer;padding:12px 0;color:var(--ink-2);font-weight:600;font-size:14.5px;list-style:none;display:flex;gap:8px;align-items:center}
+details.more summary::-webkit-details-marker{display:none}
+details.more summary::before{content:"+";display:inline-grid;place-items:center;width:18px;height:18px;border:1.5px solid var(--line-strong);border-radius:5px;font-size:13px;color:var(--muted)}
+details.more[open] summary::before{content:"–"}
+details.more ul{margin:0 0 10px;padding-left:20px;color:var(--ink-2);font-size:15px}
+details.more li{margin:4px 0}
+
+/* skills */
+.skills{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:700px){.skills{grid-template-columns:1fr}}
+.skillbox{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.skillbox h3{margin:0 0 4px;font-size:17px;font-weight:800}
+.skillbox .hint{color:var(--muted);font-size:13.5px;margin:0 0 14px}
+.skillbox dl{margin:0;display:grid;grid-template-columns:6.2em 1fr;gap:9px 12px;font-size:14.5px}
+.skillbox dt{color:var(--muted);font-weight:600}
+.skillbox dd{margin:0;color:var(--ink-2)}
+.skillbox dd em{font-style:normal;color:var(--muted);font-size:13px}
+
+/* secondary projects */
+.side{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:700px){.side{grid-template-columns:1fr}}
+.side article{border:1px solid var(--line);border-radius:14px;padding:20px 22px;background:transparent}
+.side h3{margin:0 0 6px;font-size:17px;font-weight:800}
+.side p{margin:0 0 10px;color:var(--ink-2);font-size:15px}
+.side .st{font-size:12.5px;font-weight:600;padding:3px 9px;border-radius:999px;background:var(--warn-soft);color:var(--warn);margin-left:8px;vertical-align:middle}
+
+/* growth */
+.grow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media (max-width:760px){.grow{grid-template-columns:1fr}}
+.grow article{border-top:3px solid var(--navy);padding:16px 2px 0}
+.grow h3{margin:0 0 12px;font-size:16.5px;font-weight:800}
+.grow dl{margin:0;font-size:14.5px}
+.grow dt{color:var(--muted);font-weight:600;margin-top:10px}
+.grow dt:first-child{margin-top:0}
+.grow dd{margin:2px 0 0;color:var(--ink-2)}
+
+/* learning logs & background */
+.logs{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.logs li{display:grid;grid-template-columns:9.5em 1fr;gap:6px 18px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px}
+.logs .d{color:var(--muted)}
+.logs .t{font-weight:700}
+.logs .x{color:var(--ink-2);display:block;margin-top:2px;font-size:14.5px}
+@media (max-width:560px){.logs li{grid-template-columns:1fr;gap:2px}}
+.bg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+@media (max-width:760px){.bg{grid-template-columns:1fr}}
+.bg h3{font-size:15px;margin:0 0 8px;font-weight:800;color:var(--ink)}
+.bg ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:14.5px}
+.bg li{margin:4px 0}
+
+/* contact */
+.contact{padding:64px 0 80px}
+.contact .box{background:var(--navy);color:#E9EEF8;border-radius:16px;padding:30px 28px;display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center}
+.contact h2{margin:0;font-size:22px;letter-spacing:-.02em;flex-basis:100%}
+.contact a{color:#fff;font-weight:600;border-bottom:1px solid rgba(255,255,255,.35)}
+.contact a:hover{text-decoration:none;border-color:#fff}
+.contact .note{flex-basis:100%;font-size:13.5px;color:#B9C4DD;margin:6px 0 0}
+footer{color:var(--muted);font-size:13px;padding:0 0 40px;text-align:left}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="섹션">
+  <div class="wrap">
+    <span class="name">윤우성</span>
+    <ul>
+      <li><a href="#about">소개</a></li>
+      <li><a href="#projects">프로젝트</a></li>
+      <li><a href="#skills">기술</a></li>
+      <li><a href="#more">보조 프로젝트</a></li>
+      <li><a href="#growth">성장 계획</a></li>
+      <li><a href="#logs">학습 기록</a></li>
+      <li><a href="#contact">연락처</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1><span class="role">Backend-focused Fullstack Developer</span>기술을 선택한 이유를 설명할 수 있는 개발자</h1>
+    <p class="lede">문제를 발견하면 가설을 세우고 검증합니다. 구현 결과뿐 아니라 설계 이유와 실패 경험을 기록하며 성장합니다.</p>
+    <div class="meta">
+      <span>한국기술교육대학교 정보통신공학부, 2028년 2월 졸업 예정</span>
+      <a href="https://github.com/yoonwoosung">github.com/yoonwoosung</a>
+      <a href="mailto:wws030816@gmail.com">wws030816@gmail.com</a>
+    </div>
+
+    <div class="ledger" aria-label="근거가 있는 숫자">
+      <ol>
+        <li>
+          <div class="n">170<small>명</small></div>
+          <div class="what">실사용자가 있는 교내 서비스를 팀장으로 운영</div>
+          <div class="src">K-OSP 시즌 랭킹 페이지 공개 표기, 2026.11 · <a href="https://swkoreatech.io/ranking">swkoreatech.io/ranking</a></div>
+        </li>
+        <li>
+          <div class="n">773<small>케이스</small></div>
+          <div class="what">FarmLink 백엔드 테스트, 770 통과</div>
+          <div class="src">pytest 수집 결과 45파일 · <a href="https://github.com/yoonwoosung/SW_id/tree/develop/tests">SW_id/tests</a></div>
+        </li>
+        <li>
+          <div class="n">3<small>일</small></div>
+          <div class="what">같은 401 뒤의 네 가지 원인을 격리해 찾기까지</div>
+          <div class="src">2026.07.26~29 · <a href="https://github.com/yoonwoosung/SW_id#readme">README 트러블슈팅</a></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <h2>어떤 개발자인가</h2>
+    <p class="sub">두 개의 팀 프로젝트에서 백엔드를 맡아 설계부터 배포·운영까지 했습니다.</p>
+    <p>교내 오픈소스 포털 <strong>K-OSP</strong>는 전임자의 Spring Boot MSA 구조를 인수해 팀장으로 운영하며 칭호, 시즌 랭킹, 이력서 PDF/hwpx 기능을 만들었습니다. 농촌관광 플랫폼 <strong>FarmLink</strong>에서는 Flask로 TourAPI 연동, 추천 로직, 파일 캐시, 배포 파이프라인을 맡아 ICT이노베이션 충청권 대상을 받았습니다.</p>
+    <p>AI 코딩 도구로 빠르게 만든 코드가 한 달 뒤 "왜 그렇게 짰는지" 설명되지 않는 순간이 늘어난 뒤로, <strong>선택 이유와 대안, 검증 방법을 커밋 본문과 ADR에 남기는 것</strong>을 규칙으로 삼았습니다. 외부 API 401을 사흘 동안 변수 하나씩 빼 가며 격리한 경험, 워커가 여럿인 환경에서 메모리 대신 파일 캐시를 고른 이유, 멈춰 있던 자동화 CI를 4개월 만에 발견한 일까지, 성공보다 판단의 근거를 남기려 합니다.</p>
+    <p>이 페이지의 모든 숫자에는 커밋, 파일, 실행 결과 출처가 있고, 팀 성과와 제 기여를 구분해 적었습니다.</p>
+  </div>
+</section>
+<hr class="rule">
+
+<section id="projects">
+  <div class="wrap">
+    <h2>대표 프로젝트</h2>
+    <p class="sub">각 프로젝트는 문제, 판단, 결과의 순서로 적었습니다. 결과 뒤의 작은 글씨가 근거입니다.</p>
+
+    <article class="case" id="kosp">
+      <figure>
+        <img src="https://raw.githubusercontent.com/yoonwoosung/yoonwoosung/main/assets/screens/kosp_ranking_season.jpg" alt="K-OSP 시즌 랭킹 페이지. 상단에 1~3위 포디움, 아래에 순위표와 총 170명 표기" loading="lazy" width="1600" height="884">
+        <figcaption>실서비스 화면(2026.11). 다른 사용자의 이름과 사진은 흐리게 처리했습니다.</figcaption>
+      </figure>
+      <div class="body">
+        <h3>K-OSP, 교내 오픈소스 포털 <span class="badge live">운영 중</span></h3>
+        <p class="when">2026년 2월부터 현재 · 팀 프로젝트(개발 2명, 디자인 1명) · 팀장</p>
+        <p class="summary">학생들의 GitHub 활동을 자동 수집해 랭킹, 칭호, 이력서로 바꿔 주는 서비스입니다. 전임 개발자가 떠난 뒤 6개 모듈(backend, harvester, challenge-service, common, rabbitmq, flyway)로 된 구조를 인수해, 운영과 기능 확장을 함께 해야 했습니다.</p>
+        <dl class="kv">
+          <dt>내가 맡은 것</dt><dd>칭호 시스템, 시즌 랭킹과 티어, 다중 이력서 API와 PDF·hwpx 출력, 학습자료, 팔로우, 약관 동의 정책, 커밋→Notion 자동 기록 CI. <b>백엔드 33, 프론트 58 커밋, Flyway 마이그레이션 35건, +20,045줄.</b> MSA 구조 자체는 전임자 설계를 인수한 것으로 제가 설계하지 않았습니다.</dd>
+          <dt>스택</dt><dd>Java 17, Spring Boot 3.5, JPA, PostgreSQL + Flyway, Redis(Valkey), MongoDB, RabbitMQ, hwpxlib / Next.js 15, React 18, TypeScript, Tailwind 4 / Docker Compose, GitHub Actions</dd>
+        </dl>
+
+        <ol class="rail">
+          <li>
+            <h4>이력서 hwpx를 어디서 만들 것인가</h4>
+            <dl class="pjr">
+              <dt class="p">문제</dt><dd>프론트에서 만들면 화면 미리보기와 실제 파일이 달라졌습니다.</dd>
+              <dt class="j">판단</dt><dd>hwpxlib로 백엔드에서 생성하고, 미리보기는 실제로 내려받을 PDF 하나로 통일했습니다.</dd>
+              <dt class="r">결과</dt><dd>미리보기와 파일이 일치. 글자 잘림은 페이지 절단 후보를 섹션 경계에서 항목 경계(<code>data-pdf-cut</code>)로 세분화해 강제 절단 5건을 0건으로. <span class="ref"><a href="https://github.com/KOREATECH-OSP/KOSP-Frontend/commit/fbe3502">KOSP-Frontend fbe3502</a></span></dd>
+            </dl>
+          </li>
+          <li>
+            <h4>배포 직후 502, 원인은 마이그레이션 번호 충돌</h4>
+            <dl class="pjr">
+              <dt class="p">문제</dt><dd>배포하자마자 nginx 502. 로그는 "Found more than one migration with version 29".</dd>
+              <dt class="j">판단</dt><dd>이미 적용된 V29와 제 V29가 같은 번호였습니다. 테스트 프로필이 Flyway를 끄고 H2 create-drop을 써서 CI가 잡지 못한 것을 확인하고, 적용된 쪽은 두고 제 파일을 V33으로 옮겼습니다.</dd>
+              <dt class="r">결과</dt><dd>데이터 손실 없이 복구. CI가 초록이어도 운영과 다른 프로필이면 보장이 없다는 것을 배웠고, 테스트에서도 Flyway를 켜는 일을 다음 이슈로 남겼습니다. <span class="ref"><a href="https://github.com/KOREATECH-OSP/KOSP-Backend/commit/d0ce68b4">KOSP-Backend d0ce68b4</a></span></dd>
+            </dl>
+          </li>
+          <li>
+            <h4>4개월 동안 아무도 모르게 멈춰 있던 자동화</h4>
+            <dl class="pjr">
+              <dt class="p">문제</dt><dd>커밋마다 Notion에 작업 로그를 쌓는 CI가 7월부터 시크릿 오류로 실패하고 있었는데, 실패를 알리는 장치가 없었습니다.</dd>
+              <dt class="j">판단</dt><dd>자동 집계는 "했다"는 남기지만 "왜"는 못 남깁니다. 그래도 멈춘 자동화는 더 나쁘다고 보고 둘 다 고쳤습니다.</dd>
+              <dt class="r">결과</dt><dd>시크릿 형식 가드 추가, 누락분 16건 백필. 기록은 교수님 피드백으로 9월부터 주간 리포트(5부)로 옮겨 유지. <span class="ref"><a href="https://github.com/KOREATECH-OSP/KOSP-Backend/tree/develop/.github/scripts">.github/scripts</a></span></dd>
+            </dl>
+          </li>
+        </ol>
+
+        <details class="more">
+          <summary>그 밖의 수정 기록</summary>
+          <ul>
+            <li>초대 상세 500: 트랜잭션 밖 LAZY 접근 → 클래스 레벨 <code>@Transactional(readOnly = true)</code> (6696e841)</li>
+            <li>PDF 생성 실패: Tailwind 4의 oklch()를 html2canvas가 지원하지 않음 → html2canvas-pro로 전환 (a9047fc)</li>
+            <li>시즌 티어는 백분위로 5단계를 나누고 CHALLENGER만 절대 점수 조건 (<code>SeasonRankingBatchService</code>). 화면의 안내 모달은 점수 구간으로 적혀 있어 프론트 수정을 이슈로 남겼습니다.</li>
+          </ul>
+        </details>
+      </div>
+      <div class="foot">
+        <span class="lim">한계: 부하와 응답시간 수치가 없습니다. 분산 락이 없어 ShedLock 도입을 다음 이슈로 두었습니다.</span>
+        <a href="https://swkoreatech.io">서비스</a>
+        <a href="https://github.com/KOREATECH-OSP/KOSP-Backend">Backend 저장소</a>
+        <a href="https://github.com/KOREATECH-OSP/KOSP-Frontend">Frontend 저장소</a>
+        <a href="https://antique-bangle-481.notion.site/413197909e6b816f815edac5f4afad72">상세 문서</a>
+      </div>
+    </article>
+
+    <article class="case" id="farmlink">
+      <figure>
+        <img src="https://raw.githubusercontent.com/yoonwoosung/yoonwoosung/main/assets/screens/farmlink_course_detail.jpg" alt="FarmLink 추천 코스 상세 화면. 예약한 체험을 중심으로 시간순 코스, 예상 비용, ESG 점수가 표시됨" loading="lazy" width="1600" height="1000">
+        <figcaption>저장소의 local_run.py로 로컬 실행한 화면입니다. 서비스는 2026년 9월 종료 후 내려가 있습니다.</figcaption>
+      </figure>
+      <div class="body">
+        <h3>FarmLink, 충청권 농촌관광 체험 예약과 AI 추천 코스 <span class="badge ended">2026.09 종료</span></h3>
+        <p class="when">2025년 9월부터 2026년 9월 · 팀 프로젝트(PM 1, 백엔드 2, 프론트 1) · 백엔드</p>
+        <p class="summary">농장 체험 예약과 주변 관광 코스 추천을 한 흐름으로 묶은 플랫폼입니다. 사용자 위치 50km 안에서 규칙 점수(거리 0.5, 특산 0.3, 여석 0.2)로 순위를 정하고, LLM은 추천 이유 문장만 만듭니다. ESG 점수와 11개 대분류 223개 조건 필터를 제공합니다.</p>
+        <dl class="kv">
+          <dt>내가 맡은 것</dt><dd>TourAPI 4종(관광지, 반려동물, 무장애, 의료) 연동, 추천 점수와 코스 생성, ESG 점수, 조건 카테고리 상수화, 파일 캐시, GitHub Actions 배포, 1,536줄 app.py 도메인 분할(38파일), 팀 규칙 문서. <b>본인 커밋 174건.</b> 회원, 예약, 결제, 관리자 도메인은 다른 백엔드 팀원 담당.</dd>
+          <dt>스택</dt><dd>Python 3.10, Flask 3.1, SQLAlchemy, MySQL, PWA, 한국관광공사 TourAPI, 카카오맵, Naver CLOVA, pytest, GitHub Actions, PythonAnywhere</dd>
+        </dl>
+
+        <ol class="rail">
+          <li>
+            <h4>같은 401이 사흘 동안 네 가지 뜻이었다</h4>
+            <dl class="pjr">
+              <dt class="p">문제</dt><dd>키 오타, 신청 누락, 활성화 대기, 주소 오류가 전부 같은 401로 보였고, 코딩 도구의 진단도 키 문제와 환경 문제 사이를 오갔습니다.</dd>
+              <dt class="j">판단</dt><dd>코드, 환경변수, .env를 하나씩 빼고 브라우저에서 직접 호출해 "키 자체가 인증되는가"만 남겼습니다. 서비스 오류 코드가 없는 맨 401은 게이트웨이 미등록이었습니다.</dd>
+              <dt class="r">결과</dt><dd>코드는 처음부터 맞았고, 활성화 뒤 95건을 받았습니다. 이후 외부 API 문제는 직접 호출로 먼저 격리합니다. <span class="ref"><a href="https://github.com/yoonwoosung/SW_id#readme">README 트러블슈팅</a></span></dd>
+            </dl>
+          </li>
+          <li>
+            <h4>캐시를 메모리도 DB도 아닌 파일에 둔 이유</h4>
+            <dl class="pjr">
+              <dt class="p">문제</dt><dd>코스 카드마다 API를 2~4회 호출해 일일 한도 1,000건이 시연 중에 소진됐습니다.</dd>
+              <dt class="j">판단</dt><dd>메모리 캐시는 워커 수만큼 효과가 나뉘고, DB 캐시는 팀원의 마이그레이션 영역을 건드립니다. 파일은 워커가 공유하고 재시작 후에도 남습니다. 좌표를 소수 2자리(약 1.1km)로 반올림하고, tempfile과 os.replace로 원자적으로 쓰고, 빈 응답은 짧은 TTL로 분리했습니다.</dd>
+              <dt class="r">결과</dt><dd>한도 소진이 재발하지 않았습니다. 응답시간 개선 폭은 재지 못했습니다. <span class="ref"><a href="https://github.com/yoonwoosung/SW_id/commit/fad523ca">fad523ca</a> · <a href="https://github.com/yoonwoosung/SW_id/blob/develop/docs/adr/0003-kto-file-cache.md">ADR-0003</a></span></dd>
+            </dl>
+          </li>
+          <li>
+            <h4>순위는 규칙이, 설명은 LLM이</h4>
+            <dl class="pjr">
+              <dt class="p">문제</dt><dd>LLM이 코스 순위까지 정하면 왜 그 순서인지 설명할 수 없고 결과가 흔들립니다.</dd>
+              <dt class="j">판단</dt><dd>순위는 거리, 특산, 여석 가중치의 규칙 점수로 정하고, LLM(CLOVA)은 추천 이유 문장만 생성하도록 역할을 나눴습니다.</dd>
+              <dt class="r">결과</dt><dd>같은 입력에 같은 순위. 가중치는 PM이 직접 조정할 수 있게 상수로 분리. <span class="ref"><a href="https://github.com/yoonwoosung/SW_id/blob/develop/docs/adr/0002-rule-based-recommendation-llm-explains.md">ADR-0002</a></span></dd>
+            </dl>
+          </li>
+        </ol>
+
+        <details class="more">
+          <summary>그 밖의 수정 기록</summary>
+          <ul>
+            <li>1,536줄 단일 파일 app.py를 routes, services, external, models, common으로 분할. 기준은 "팀원이 내 파일을 안 건드려도 되는가" (1c3bc874, ADR-0001)</li>
+            <li>배포: develop 푸시 → SSH → reload → 헬스체크까지 GitHub Actions로 자동화</li>
+            <li>팀 규칙(브랜치, 커밋, PR 300줄, 본인 머지 금지, DoD)을 직접 써서 공유했지만 PR 1건, 대부분 pull 머지로 끝났습니다</li>
+          </ul>
+        </details>
+      </div>
+      <div class="foot">
+        <span class="lim">성과: 2025 ICT이노베이션 디지털 신기술 공모전 SW개발 부문 충청권 대상(팀), 2026 관광데이터 활용 공모전 예비심사 통과. 한계: 부하 수치 없음, PR 규칙 미준수.</span>
+        <a href="https://github.com/yoonwoosung/SW_id">저장소</a>
+        <a href="https://github.com/yoonwoosung/SW_id/tree/develop/docs/adr">ADR</a>
+        <a href="https://antique-bangle-481.notion.site/413197909e6b81268d77f82db26f031f">상세 문서</a>
+      </div>
+    </article>
+  </div>
+</section>
+<hr class="rule">
+
+<section id="skills">
+  <div class="wrap">
+    <h2>기술</h2>
+    <p class="sub">실제 배포에 쓴 것과 수업이나 실습에서 다룬 것을 나눴습니다.</p>
+    <div class="skills">
+      <div class="skillbox">
+        <h3>실제 배포에 사용</h3>
+        <p class="hint">운영 중이거나 운영했던 서비스에서 직접 쓴 기술</p>
+        <dl>
+          <dt>Backend</dt><dd>Java 17, Spring Boot 3.5, JPA, Flyway, RabbitMQ <em>(K-OSP)</em> / Python 3.10, Flask 3.1, SQLAlchemy <em>(FarmLink)</em></dd>
+          <dt>Database</dt><dd>PostgreSQL, MySQL, Redis(Valkey), 파일 캐시 설계</dd>
+          <dt>Frontend</dt><dd>Next.js 15, React 18, TypeScript, Tailwind 4 / Jinja, 바닐라 JS, PWA</dd>
+          <dt>DevOps</dt><dd>GitHub Actions(배포, Notion 자동 기록), Docker Compose, PythonAnywhere, AWS Amplify</dd>
+          <dt>Testing</dt><dd>pytest 773 케이스 <em>(FarmLink)</em>, JUnit 5 + JaCoCo <em>(K-OSP)</em></dd>
+          <dt>External API</dt><dd>한국관광공사 TourAPI 4종, 카카오맵, Naver CLOVA, GitHub API</dd>
+        </dl>
+      </div>
+      <div class="skillbox">
+        <h3>수업과 실습에서 다룸</h3>
+        <p class="hint">써 봤지만 설계 판단을 내린 경험은 아직 없는 기술</p>
+        <dl>
+          <dt>Backend</dt><dd>Spring Batch, FastAPI <em>(Cain에서 예정)</em></dd>
+          <dt>Database</dt><dd>MongoDB <em>(K-OSP 스택에 포함)</em>, 정규화·트랜잭션·격리수준</dd>
+          <dt>Mobile</dt><dd>Flutter <em>(Cain)</em></dd>
+          <dt>Cloud · AI</dt><dd>GCP(Vertex AI, BigQuery, Cloud Build, GKE), Azure AI, scikit-learn</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+
+<section id="more">
+  <div class="wrap">
+    <h2>보조 프로젝트</h2>
+    <p class="sub">대표 프로젝트보다 작지만 판단의 흔적이 있는 것들</p>
+    <div class="side">
+      <article>
+        <h3>DDoS 트래픽 탐지 ML</h3>
+        <p>4인 팀 과제, 팀장. 첫 모델이 정확도 100%를 기록해 숫자부터 의심했습니다. 특성 중요도 1위가 Source IP였고, 식별자 컬럼이 레이블을 그대로 드러내고 있었습니다. 식별자를 제거하고 다시 학습해 RandomForest F1 99.79%, GridSearch 128조합과 놓친 공격 279건을 모델별로 비교했습니다.</p>
+        <p><a href="https://github.com/yoonwoosung/MSL">저장소</a> · <a href="https://antique-bangle-481.notion.site/413197909e6b8122912cf586afcd285e">상세 문서</a></p>
+      </article>
+      <article>
+        <h3>Cain <span class="st">진행 중</span></h3>
+        <p>모바일프로그래밍 3인 팀 프로젝트, Flutter 앱. FarmLink에서 규칙이 문서로만 남았던 경험을 반영해 이번에는 모델, 데이터, 화면, API 계약을 시작 전에 문서화하고 공통 수정은 3인 합의로 정했습니다. 제가 맡을 FastAPI 백엔드는 아직 구현 전입니다.</p>
+        <p><a href="https://github.com/kang-junhyeong/cain">저장소</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+
+<section id="growth">
+  <div class="wrap">
+    <h2>한계와 다음 행동</h2>
+    <p class="sub">숨기지 않고 적되, 각각에 다음 행동을 붙였습니다.</p>
+    <div class="grow">
+      <article>
+        <h3>부하 테스트와 성능 측정</h3>
+        <dl>
+          <dt>한계</dt><dd>"막았다"는 확인했지만 "얼마나"는 말할 수 없습니다. 캐시 전후 응답시간, 부하 수치가 없습니다.</dd>
+          <dt>배운 점</dt><dd>측정 없는 개선은 주장입니다.</dd>
+          <dt>다음 행동</dt><dd>다음 프로젝트는 k6로 p50/p95 기준선부터 잡고 시작합니다.</dd>
+        </dl>
+      </article>
+      <article>
+        <h3>브랜치 보호와 협업 규칙</h3>
+        <dl>
+          <dt>한계</dt><dd>FarmLink 팀 규칙을 직접 썼지만 PR 1건, 대부분 pull 머지로 끝났습니다.</dd>
+          <dt>배운 점</dt><dd>규칙은 문서가 아니라 시스템이 지키게 해야 합니다.</dd>
+          <dt>다음 행동</dt><dd>저장소를 만드는 시점에 브랜치 보호와 CI 게이트를 설정합니다. Cain에서는 계약을 먼저 썼습니다.</dd>
+        </dl>
+      </article>
+      <article>
+        <h3>AI 생성 코드의 직접 검증</h3>
+        <dl>
+          <dt>한계</dt><dd>AI 코딩 도구 의존도가 높고, 도구의 진단은 흔들립니다.</dd>
+          <dt>배운 점</dt><dd>검증 없는 코드는 설명할 수 없고, 설명할 수 없는 코드는 제 것이 아닙니다.</dd>
+          <dt>다음 행동</dt><dd>커밋 본문에 원인, 대안, 검증을 남기고, 핵심 모듈 하나는 도구 없이 직접 작성합니다.</dd>
+        </dl>
+      </article>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+
+<section id="logs">
+  <div class="wrap">
+    <h2>학습 기록과 배경</h2>
+    <p class="sub">로그인 없이 열리는 링크만 적었습니다.</p>
+    <ul class="logs">
+      <li><span class="d">2026.07 ~ 현재</span><span><a class="t" href="https://antique-bangle-481.notion.site/413197909e6b81fcb915ed46d7f33778">포트폴리오 허브(Notion)</a><span class="x">두 프로젝트의 기술 결정, 장애, 회고를 문제 → 판단 → 결과 구조로 정리. 커밋→Notion 자동 기록과 주간 리포트 전환 과정 포함.</span></span></li>
+      <li><span class="d">2026.07 ~ 2026.11</span><span><a class="t" href="https://github.com/yoonwoosung/SW_id/tree/develop/docs/adr">FarmLink ADR 3건</a><span class="x">단일 파일 분할, 규칙 기반 추천 + LLM 설명, 파일 캐시. 결정 시점의 커밋 해시를 함께 적어 코드와 대조할 수 있습니다.</span></span></li>
+      <li><span class="d">2026.07.26 ~ 29</span><span><a class="t" href="https://github.com/yoonwoosung/SW_id#readme">TourAPI 401 원인 격리 기록</a><span class="x">같은 401 뒤에 숨은 네 가지 원인을 변수 하나씩 빼며 격리한 과정.</span></span></li>
+      <li><span class="d">2025.07</span><span><a class="t" href="https://github.com/yoonwoosung/google-techcamp-gcp-labs">Google 테크캠프 GCP 실습 6건</a><span class="x">BigQuery API, Vertex AI AutoML, VM과 인스턴스 그룹, Cloud Build → GKE, RAG. 저장소 6개를 git subtree로 히스토리를 보존한 채 통합.</span></span></li>
+      <li><span class="d">140시간</span><span><span class="t">Microsoft AI 엔지니어 과정</span><span class="x">한국마이크로소프트 연계. Azure AI 실습과 팀 프로젝트 포함.</span></span></li>
+    </ul>
+
+    <div class="bg" style="margin-top:36px">
+      <div>
+        <h3>학력과 교육</h3>
+        <ul>
+          <li>한국기술교육대학교 정보통신공학부 3학년, 2028년 2월 졸업 예정</li>
+          <li>Microsoft AI 엔지니어 과정 140시간</li>
+          <li>Google 테크캠프 GCP 실습(2025.07)</li>
+        </ul>
+      </div>
+      <div>
+        <h3>수상과 활동</h3>
+        <ul>
+          <li>2025 ICT이노베이션 디지털 신기술 공모전 SW개발 부문 충청권 대상, FarmLink(2025.10, 충북과학기술혁신원)</li>
+          <li>2026 관광데이터 활용 공모전 웹·앱 개발 부문 예비심사 통과(2026.05)</li>
+          <li>K-OSP 개발팀 팀장(SW중심사업단, 2026.02~)</li>
+          <li>시립서울청소년센터 초등학생 대상 AI 교육 강의</li>
+        </ul>
+      </div>
+      <div>
+        <h3>자격</h3>
+        <ul>
+          <li>OPIc IH(2026.08)</li>
+          <li>전자기능사(2021.07)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="box">
+      <h2>연락처</h2>
+      <a href="mailto:wws030816@gmail.com">wws030816@gmail.com</a>
+      <a href="https://github.com/yoonwoosung">github.com/yoonwoosung</a>
+      <a href="https://antique-bangle-481.notion.site/413197909e6b81fcb915ed46d7f33778">Notion 포트폴리오</a>
+      <p class="note">저장소: <a href="https://github.com/KOREATECH-OSP/KOSP-Backend">KOSP-Backend</a>, <a href="https://github.com/KOREATECH-OSP/KOSP-Frontend">KOSP-Frontend</a>, <a href="https://github.com/yoonwoosung/SW_id">SW_id(FarmLink)</a>, <a href="https://github.com/yoonwoosung/MSL">MSL</a>, <a href="https://github.com/yoonwoosung/google-techcamp-gcp-labs">google-techcamp-gcp-labs</a></p>
+    </div>
+  </div>
+  <footer class="wrap">마지막 수정 2026년 11월 9일. 모든 숫자는 해당 시점의 저장소와 실행 결과 기준입니다.</footer>
+</section>
+
+</body>
+</html>
